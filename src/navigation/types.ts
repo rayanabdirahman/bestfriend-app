@@ -1,5 +1,15 @@
 import { NavigatorScreenParams } from '@react-navigation/native';
 
+export type AuthStackParamList = {
+  SignUpScreen: undefined;
+  SignInScreen: undefined;
+};
+
+export enum AuthStackScreenNames {
+  SIGN_UP_SCREEN = 'SignUpScreen',
+  SIGN_IN_SCREEN = 'SignInScreen'
+}
+
 export type RootStackParamList = {
   Root: NavigatorScreenParams<RootTabParamList> | undefined;
   Modal: undefined;

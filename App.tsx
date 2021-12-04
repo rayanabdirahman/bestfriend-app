@@ -10,7 +10,7 @@ import Navigation from './src/navigation';
 function App() {
   return (
     <>
-      <Navigation />
+      <Navigation isUserSignedIn={false} />
       <StatusBar style="auto" />
     </>
   );
