@@ -1,8 +1,9 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { AuthStackParamList, AuthStackScreenNames } from '../types';
-import SignUpScreen from '../../screens/SignUp';
-import SignInScreen from '../../screens/SignIn';
+
+const SignUpScreen = React.lazy(() => import('../../screens/SignUp'));
+const SignInScreen = React.lazy(() => import('../../screens/SignIn'));
 
 const Stack = createNativeStackNavigator<AuthStackParamList>();
 

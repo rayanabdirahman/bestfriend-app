@@ -1,4 +1,5 @@
 import { NavigatorScreenParams } from '@react-navigation/native';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
 export type AuthStackParamList = {
   SignUpScreen: undefined;
@@ -27,3 +28,9 @@ export enum RootTabScreenNames {
   FEED_SCREEN = 'FeedScreen',
   SETTINGS_SCREEN = 'SettingsScreen'
 }
+
+export type AuthScreenProps<Screen extends keyof AuthStackParamList> =
+  NativeStackScreenProps<AuthStackParamList, Screen>;
+
+export type RootScreenProps<Screen extends keyof RootTabParamList> =
+  NativeStackScreenProps<RootTabParamList, Screen>;

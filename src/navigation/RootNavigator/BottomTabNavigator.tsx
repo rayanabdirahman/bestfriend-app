@@ -3,9 +3,10 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { RootTabParamList, RootTabScreenNames } from '../types';
 import theme from '../../domain/constants/theme';
 import TabBarIcon from '../TabBarIcon';
-import HomeScreen from '../../screens/Home';
-import FeedScreen from '../../screens/Feed';
-import SettingsScreen from '../../screens/Settings';
+
+const HomeScreen = React.lazy(() => import('../../screens/Home'));
+const FeedScreen = React.lazy(() => import('../../screens/Feed'));
+const SettingsScreen = React.lazy(() => import('../../screens/Settings'));
 
 const BottomTab = createBottomTabNavigator<RootTabParamList>();
 
