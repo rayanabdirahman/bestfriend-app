@@ -6,5 +6,6 @@ export const view = styled(SafeAreaView)<Props>`
   display: flex;
   flex: 1;
   padding: 0 20px;
+  padding-top: 16px;
   background-color: ${({ theme }) => theme.color.white};
 `;
