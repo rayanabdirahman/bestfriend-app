@@ -1,52 +1,29 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import {
-  ActivityIndicator,
-  Pressable,
-  StyleSheet,
-  Text,
-  View
-} from 'react-native';
-import { Provider, useDispatch, useSelector } from 'react-redux';
+import { StatusBar } from 'expo-status-bar';
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+import { Provider } from 'react-redux';
+import { ThemeProvider } from 'styled-components';
 import { store } from './src/store';
-import { signInUserAction } from './src/store/actions/account';
-import { getSignInLoadingState } from './src/store/selectors/account';
+import theme from './src/domain/constants/theme';
+import SignInScreen from './src/screens/SignIn';
 
 function App() {
-  const dispatch = useDispatch();
-  const signInLoadingState = useSelector(getSignInLoadingState);
-
-  const model = {
-    email: 'jacob@gmail.com',
-    password: '12345678'
-  };
-
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <Pressable onPress={() => dispatch(signInUserAction(model))}>
-        <Text style={{ color: 'red' }}>
-          {signInLoadingState ? <ActivityIndicator /> : 'Sign in'}
-        </Text>
-      </Pressable>
+    <SafeAreaView style={{ flex: 1 }}>
+      <SignInScreen />
       <StatusBar style="auto" />
-    </View>
+    </SafeAreaView>
   );
 }
 
 export default function (): JSX.Element {
   return (
     <Provider store={store}>
-      <App />
+      <ThemeProvider theme={theme}>
+        <SafeAreaProvider>
+          <App />
+        </SafeAreaProvider>
+      </ThemeProvider>
     </Provider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center'
-  }
-});
