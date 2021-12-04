@@ -1,18 +1,18 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Provider } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
 import { store } from './src/store';
 import theme from './src/domain/constants/theme';
-import SignInScreen from './src/screens/SignIn';
+import Navigation from './src/navigation';
 
 function App() {
   return (
-    <SafeAreaView style={{ flex: 1 }}>
-      <SignInScreen />
+    <>
+      <Navigation />
       <StatusBar style="auto" />
-    </SafeAreaView>
+    </>
   );
 }
 
