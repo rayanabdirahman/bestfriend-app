@@ -12,13 +12,13 @@ import useAuthGuard from './src/hooks/utilities/useAuthGuard';
 
 function App() {
   const { isAuthCheckComplete, isUserSignedIn } = useAuthGuard();
-  // if (!isAuthCheckComplete) {
-  //   return (
-  //     <SafeAreaView style={{ flex: 1, justifyContent: 'center' }}>
-  //       <ActivityIndicator />
-  //     </SafeAreaView>
-  //   );
-  // }
+  if (!!isAuthCheckComplete) {
+    return (
+      <SafeAreaView style={{ flex: 1, justifyContent: 'center' }}>
+        <ActivityIndicator />
+      </SafeAreaView>
+    );
+  }
   return (
     <React.Suspense fallback={<ActivityIndicator />}>
       <Navigation isUserSignedIn={isUserSignedIn} />
