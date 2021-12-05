@@ -9,7 +9,8 @@ const initialState: SessionState = {
 
 export default (state = initialState, action: AnyAction) => {
   switch (action.type) {
-    case AccountActionType.SIGN_IN_SUCCESS: {
+    case AccountActionType.SIGN_IN_SUCCESS:
+    case AccountActionType.SIGN_UP_SUCCESS: {
       const { token, user } = action.payload;
       return { ...state, token, user };
     }
@@ -19,6 +20,7 @@ export default (state = initialState, action: AnyAction) => {
       return { ...state, token, user };
     }
     case AccountActionType.SIGN_IN_FAIL:
+    case AccountActionType.SIGN_UP_FAIL:
     case AccountActionType.SIGN_OUT_SUCCESS: {
       return { ...state, user: null, token: null };
     }

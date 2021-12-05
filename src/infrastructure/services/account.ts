@@ -2,6 +2,7 @@ import AccountApi from '../api/account';
 import {
   AccountAccessReturnType,
   SignInModel,
+  SignUpModel,
   UserModel
 } from '../../domain/interfaces/account';
 import LocalStorageService from './localStorage';
@@ -13,6 +14,7 @@ type SetCurrentUserReturnType = {
 
 type AccountService = {
   signIn(model: SignInModel): Promise<AccountAccessReturnType>;
+  signUp(model: SignUpModel): Promise<AccountAccessReturnType>;
   signOut(): Promise<void>;
   setCurrentUser(): Promise<SetCurrentUserReturnType>;
 };
@@ -20,6 +22,12 @@ type AccountService = {
 const AccountService: AccountService = {
   async signIn(model: SignInModel): Promise<AccountAccessReturnType> {
     const { user, token } = await AccountApi.signIn(model);
+    LocalStorageService.setAccessToken(token);
+    LocalStorageService.setUser(user);
+    return { user, token };
+  },
+  async signUp(model: SignUpModel): Promise<AccountAccessReturnType> {
+    const { user, token } = await AccountApi.signUp(model);
     LocalStorageService.setAccessToken(token);
     LocalStorageService.setUser(user);
     return { user, token };
